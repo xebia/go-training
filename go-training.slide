@@ -1537,7 +1537,7 @@ Tasks:
 - Same but wait no more than 1 second (ignore the rest). Also report the number of results received.
 
     // 2 solution examples
-    
+
     Peek:solutions/concurrency
     Peek:solutions/concurrency2
 
@@ -1591,6 +1591,43 @@ The "any" type is a catch-all with regards to types
 #----------------------------------------------
 * Max value of a certain type
 .play -edit examples/generics/genericMax/main.go /START OMIT/,/END OMIT/
+
+#----------------------------------------------
+* Can be used in testing as well
+
+If you ever use GRPC...
+
+    func toPtr[T any](val T) *T {
+        return &val
+    }
+
+
+#----------------------------------------------
+* And in interfaces too!
+
+    var _ Iterator[any] = (*SpannerIterator[any])(nil)
+
+    type Iterator[T any] interface {
+    	Do(f func(t T) error) error
+    	ToResults() ([]T, error)
+    	ToSingleResult() (T, error)
+    }
+
+    type SpannerIterator[T any] struct {
+    	it         *spanner.RowIterator
+    }
+
+    func NewSpannerIterator[T any](it *spanner.RowIterator) Iterator[T] {
+    	return &SpannerIterator[T]{
+    		it: it,
+    	}
+    }
+
+
+	user, err := NewSpannerIterator(User).ToSingleResult() // uses generic spanner iterator
+
+
+
 
 #----------------------------------------------
 
