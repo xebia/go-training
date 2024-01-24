@@ -1129,6 +1129,31 @@ How:
     exit status 1
 
 #----------------------------------------------
+* testify package
+
+Widely adopted package which includes common assertions
+
+To start using the package:
+
+    go get github.com/stretchr/testify/assert/...
+
+
+Import package:
+
+    import "github.com/stretchr/testify/assert"
+
+Use in test:
+
+    ....
+    sut := NewAppointmentStore(NewBasicUuider())
+    appointment, found, err := sut.GetAppointmentOnUid(c, "a")
+    assert.NoError(t, err)
+    assert.True(t, found)
+    assert.Equal(t, "a", appointment.AppointmentUID)
+    ....
+
+
+#----------------------------------------------
 * Exercise unit test
 
 Create a new directory in the exercises directory
@@ -1150,28 +1175,6 @@ Develop a package that provides a directorysplitter that converts "a/b/c" into "
 - Run unit test and observe  success
 
   Peek: solutions/directorysplitter/directorysplitter_test.go
-
-#----------------------------------------------
-* Java style asserts
-
-Start using package:
-
-    go get github.com/stretchr/testify/assert/...
-
-
-Use package:
-
-    import "github.com/stretchr/testify/assert"
-
-Use in test:
-
-    ....
-    sut := NewAppointmentStore(NewBasicUuider())
-    appointment, found, err := sut.GetAppointmentOnUid(c, "a")
-    assert.NoError(t, err)
-    assert.True(t, found)
-    assert.Equal(t, "a", appointment.AppointmentUID)
-    ....
 
 #----------------------------------------------
 * Table driven test (when in Rome, do as ....)
@@ -1210,6 +1213,8 @@ Tasks:
     "a/b/c"      ","            []string{"a/b/c"}
     "abc"        "/"            []string{"abc"}
 
+
+- TIP: your IDE can create the boilerplate for a table driven test
 
    Peek: solutions/tests/validateemail_test.go
 

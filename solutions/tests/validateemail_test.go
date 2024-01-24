@@ -32,3 +32,31 @@ func TestValidateEmail(t *testing.T) {
 }
 
 // END OMIT
+
+// TestIsValidEmailAddress boilerplate is created by the IDE
+func TestIsValidEmailAddress(t *testing.T) {
+	type args struct {
+		emailAddress string
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{args: args{emailAddress: ""}, want: false},
+		{args: args{emailAddress: "@"}, want: false},
+		{args: args{emailAddress: "@xebia"}, want: false},
+		{args: args{emailAddress: "m/grol@xebia..com"}, want: false},
+		{args: args{emailAddress: "mgrol@xebia..com"}, want: false},
+		{args: args{emailAddress: "mgrol@xebia"}, want: true},
+		{args: args{emailAddress: "mgrol+dev@xebia"}, want: true},
+		{args: args{emailAddress: "marc.grol@gmail.com"}, want: true},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := IsValidEmailAddress(tt.args.emailAddress); got != tt.want {
+				t.Errorf("IsValidEmailAddress() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
