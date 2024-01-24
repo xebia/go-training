@@ -24,11 +24,10 @@ type service struct {
 
 // START OMIT
 func (s *service) createNewUser(user User) error {
-	err := s.db.RunTransaction(func(h *DatabaseHandle) error {
+	err := s.db.RunInTransaction(func(h *DatabaseHandle) error {
 		// Your business logic in this anonymous function // HL
 		log.Printf("Store user %v using database transaction: %s\n", user, h.GetTranactionId())
-		// TODO do much more
-		return nil // fmt.Errorf("Simulate error")
+		return nil
 	})
 	if err != nil {
 		return err
@@ -36,7 +35,7 @@ func (s *service) createNewUser(user User) error {
 	return nil
 }
 
-func (db *Database) RunTransaction(f func(h *DatabaseHandle) error) error {
+func (db *Database) RunInTransaction(f func(h *DatabaseHandle) error) error {
 	trx := db.CreateTransaction()
 	err := f(trx.ToHandle()) // HL
 	if err != nil {
@@ -55,7 +54,7 @@ func NewDatabase() *Database {
 	return &Database{}
 }
 
-func (d Database) CreateTransaction() *Transaction {
+func (db *Database) CreateTransaction() *Transaction {
 	uid := uuid.New().String()
 	fmt.Printf("Create transaction %s\n", uid)
 	return &Transaction{
@@ -63,12 +62,12 @@ func (d Database) CreateTransaction() *Transaction {
 	}
 }
 
-func (d Database) CommitTransaction(trx *Transaction) error {
+func (db *Database) CommitTransaction(trx *Transaction) error {
 	fmt.Printf("Commit transaction %s\n", trx.uid)
 	return nil
 }
 
-func (d Database) RollbackTransaction(trx *Transaction) error {
+func (db *Database) RollbackTransaction(trx *Transaction) error {
 	fmt.Printf("Rollback transaction %s\n", trx.uid)
 	return nil
 }
@@ -77,7 +76,7 @@ type Transaction struct {
 	uid string
 }
 
-func (t Transaction) ToHandle() *DatabaseHandle {
+func (t *Transaction) ToHandle() *DatabaseHandle {
 	return &DatabaseHandle{
 		transactionUid: t.uid,
 	}
