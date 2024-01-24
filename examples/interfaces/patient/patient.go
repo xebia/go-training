@@ -1,7 +1,8 @@
-package main
+package patient
 
 import (
 	"fmt"
+	"github.com/MarcGrol/go-training/examples/interfaces/datastore"
 )
 
 type Patient struct {
@@ -11,19 +12,17 @@ type Patient struct {
 }
 
 type PatientService struct {
-	datastore Datastorer
+	ds datastore.Datastorer
 }
 
-// Constructor-like function: "injects" DataStorer
-func NewPatientService(datastore Datastorer) *PatientService {
-	ds := &PatientService{
-		datastore: datastore,
+func NewService(datastore datastore.Datastorer) *PatientService {
+	return &PatientService{
+		ds: datastore,
 	}
-	return ds
 }
 
 func (ps PatientService) Create(patient Patient) error {
-	err := ps.datastore.Put(patient.UID, patient)
+	err := ps.ds.Put(patient.UID, patient)
 	if err != nil {
 		return fmt.Errorf("Technical error creating patient with uid:%s", err)
 	}
@@ -31,7 +30,7 @@ func (ps PatientService) Create(patient Patient) error {
 }
 
 func (ps PatientService) MarkAllergicToAntiBiotics(patientUID string) error {
-	opaque, exists, err := ps.datastore.Get(patientUID)
+	opaque, exists, err := ps.ds.Get(patientUID)
 	if err != nil {
 		return fmt.Errorf("Technical error fetching patient: %s", err)
 	}
@@ -40,7 +39,7 @@ func (ps PatientService) MarkAllergicToAntiBiotics(patientUID string) error {
 	}
 	patient := opaque.(Patient)
 	patient.Allergies = append(patient.Allergies, "antibiotics")
-	err = ps.datastore.Put(patientUID, patient)
+	err = ps.ds.Put(patientUID, patient)
 	if err != nil {
 		return fmt.Errorf("Technical error updating patient allergies: %s", err)
 	}
