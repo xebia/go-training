@@ -1,15 +1,11 @@
 Learning go
-24 October 2022
+January 25th, 2024
 Tags: go golang xebia
 
-Marc Grol & Patrick Akil
-Software engineers, Xebia
+Patrick Akil
+Software engineer, Xebia
 
 http://www.xebia.com/
-
-mgrol@xebia.com
-https://github.com/MarcGrol/
-https://www.linkedin.com/in/marc-grol-42032b7
 
 pakil@xebia.com
 https://github.com/PatAkil/
@@ -17,23 +13,13 @@ https://www.linkedin.com/in/patrick-akil-721b07105/
 
 #----------------------------------------------
 
-* About Patrick
+* About me
 .image examples/images/microphone.JPG  305 456
 - Fitness, Podcasting, Content creation
 
-- Ecommerce, Healthcare
+- IoT, Ecommerce, Health Tech
 - Effectiveness: organisational, team and personal
-- Running golang in production @Duxxie and @Nextail
-
-#----------------------------------------------
-
-* About Marc
-.image examples/images/ideal.jpg
-- Running, tennis, hockey
-
-- Telecom, Finance, Mobile, Healthcare, Transport, Media, Startups
-- Allround, cost-benefit, get things done
-- Running golang in production @Duxxie
+- Running golang in production @Wavin, @Duxxie & more!
 
 #----------------------------------------------
 
