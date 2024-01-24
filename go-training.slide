@@ -1291,25 +1291,53 @@ Consequences:
 #----------------------------------------------
 * Mocks and stubs
 
-- Create mocks by hand (cumbersome)
-- Automatically generate from interface using mockgen
+- Create mocks by hand, or use testing framework
 
-.code examples/uniqueid/api.go
 
-Trigger generation:
+    package dbtestdata
 
-    go generate ./...
+    import (
+        "context"
 
-Resulting file:
+        "github.com/patakil/myproject/internal/db"
+    )
 
-   uidGeneratorMock.go
+    // enforces the type to implement the interface methods
+    var _ db.UserService = (*MockUserService)(nil)
 
-This generated mock can be used in unit tests
+    type MockUserService struct {
+        CreateUserFunc func(ctx context.Context, user db.User) (db.User, error)
+        GetUserFunc    func(ctx context.Context, userID string) (db.User, error)
+        DeleteUserFunc func(ctx context.Context, userID string) error
+
+        UpsertUsersFunc       func(ctx context.Context, users ...db.User) error
+    }
 
 #----------------------------------------------
-* Example unit test
+* Testing Tips
+- Mocks and stubs could conventionally be placed in a `testdata` directory
+- The `testdata` gets ignored by the go tool, see `go help packages` on the terminal
+- Service suites can make your testing life easier
 
-.code solutions/registrationService/service_test.go  /START OMIT/,/END OMIT/
+    import (
+    	"context"
+    	"testing"
+
+    	dbtestdata "github.com/patakil/myproject/internal/db/testdata" // alias
+    	"github.com/stretchr/testify/suite"
+    )
+
+    type serviceSuite struct {
+    	suite.Suite
+    	db dbtestdata.MockUserService
+    }
+
+    func TestService(t *testing.T) {
+    	suite.Run(t, new(serviceSuite))
+    }
+    func (s *serviceSuite) SetupSuite() {
+    // set up your mock implementations here
+
 
 #----------------------------------------------
 * Exercise dependency injection
