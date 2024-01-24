@@ -1536,7 +1536,10 @@ Tasks:
 
 - Same but wait no more than 1 second (ignore the rest). Also report the number of results received.
 
-  Peek:solutions/concurrency
+    // 2 solution examples
+    
+    Peek:solutions/concurrency
+    Peek:solutions/concurrency2
 
 
 #----------------------------------------------
