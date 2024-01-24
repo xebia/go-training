@@ -51,19 +51,19 @@ https://www.linkedin.com/in/patrick-akil-721b07105/
 
 * Overall agenda
 
-Day 1
+Past
 
 - Startup
-- Basics
+- Basics (A Tour of Go)
 
-Day 2
+Now
 
-- Advanced
-
-Day 3
-
-- Exercise in groups
-- Overall evaluation
+- Interfaces
+- More on functions
+- Testing
+- Concurrency
+- Generics
+- & More!
 
 #----------------------------------------------
 
