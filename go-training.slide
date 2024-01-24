@@ -24,28 +24,28 @@ https://www.linkedin.com/in/patrick-akil-721b07105/
 #----------------------------------------------
 
 * About you
-- Who is who?
-- What is your experience?
+- Who are you?
 - What are your expectations and goals?
 
 #----------------------------------------------
 
-* Your experience?
+* Your experience
 
-- Other languages?
-- Go installed on laptop?
-- Written any code?
-- Did tour, tutorial? Read a book?
+- What programming languages?
+- Go installed on your laptop?
+- Written any go code?
+- Completed "A tour of go"?
+- Completed go tutorials? Read a book?
 - Used go tool-chain? go get, go build, go install?
 - json/xml marshalling?
-- Build http-client and http-server?
+- Built an http-client and http-server?
 - Used channels and goroutines?
 - Unit testing?
 - Own open-source project? Production code?
 
 #----------------------------------------------
 
-* Householding
+* Housekeeping
 
 #----------------------------------------------
 
