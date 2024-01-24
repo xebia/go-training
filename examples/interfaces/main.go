@@ -1,25 +1,29 @@
 package main
 
-import "log"
+import (
+	"github.com/MarcGrol/go-training/examples/interfaces/datastore"
+	"github.com/MarcGrol/go-training/examples/interfaces/patient"
+	"log"
+)
 
-//START OMIT
+// START OMIT
 func main() {
 	// Inject Storer into business logic service
-	patientService := NewPatientService(NewSimplisticDatastore())
+	patientService := patient.NewService(datastore.NewSimplisticDatastore())
 
-	patient := Patient{UID: "patient-12345", FullName: "Sjoerd Sjoerdsma", Allergies: []string{"pinda"}}
+	p := patient.Patient{UID: "patient-12345", FullName: "Sjoerd Sjoerdsma", Allergies: []string{"pinda"}}
 
 	// Initialize with data
-	err := patientService.Create(patient) // uses Datastorer.Put // HL
+	err := patientService.Create(p) // uses Datastorer.Put // HL
 	if err != nil {
 		log.Fatalf("Error creating patient: %s", err)
 	}
 
 	// Adjust patient
-	err = patientService.MarkAllergicToAntiBiotics(patient.UID) // uses Datastorer.Get and Put // HL
+	err = patientService.MarkAllergicToAntiBiotics(p.UID) // uses Datastorer.Get and Put // HL
 	if err != nil {
 		log.Fatalf("MarkAllergicToAntiBiotics error: %s", err)
 	}
 }
 
-//END OMIT
+// END OMIT
