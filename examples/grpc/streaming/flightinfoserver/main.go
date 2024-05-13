@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	pb "github.com/MarcGrol/go-training/examples/grpc/streaming/flightinfoapi"
+	pb "github.com/xebia/go-training/examples/grpc/streaming/flightinfoapi"
 )
 
 func main() {

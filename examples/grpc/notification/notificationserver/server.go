@@ -7,8 +7,8 @@ import (
 	"net"
 	"strings"
 
-	pb "github.com/MarcGrol/go-training/examples/grpc/notification/notificationapi"
 	"github.com/google/uuid"
+	pb "github.com/xebia/go-training/examples/grpc/notification/notificationapi"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

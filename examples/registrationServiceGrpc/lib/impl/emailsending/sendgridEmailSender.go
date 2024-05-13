@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/emailsender"
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/emailsender"
 )
 
 type sendgridEmailSender struct {

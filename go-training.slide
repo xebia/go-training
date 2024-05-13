@@ -240,7 +240,7 @@ No output means something's missing!
     $ cd ${HOME}             # on unix/mac
     $ cd /d %USERPROFILE%    # on windows
 
-    $ git clone https://github.com/MarcGrol/go-training.git
+    $ git clone https://github.com/xebia/go-training.git
 
 Everything will end up in go-training:
 
@@ -1675,7 +1675,7 @@ Tasks:
 - A module is a tree of go packages, versioned as a whole
 - "go.mod"-file in its root stores module-name and dependencies
 
-    module github.com/MarcGrol/my-example
+    module github.com/xebia/my-example
 
     go 1.18
 
@@ -1687,7 +1687,7 @@ Tasks:
 
 Real-life example:
 
-    github.com/MarcGrol/go-training/go.mod
+    github.com/xebia/go-training/go.mod
 
 #----------------------------------------------
 * Major version upgrade
@@ -1775,7 +1775,7 @@ Tasks:
 
 - Create a go module
 
-# go mod init github.com/MarcGrol/myuuid
+# go mod init github.com/xebia/myuuid
 # go mod tidy
 
 #----------------------------------------------
@@ -2290,11 +2290,11 @@ We'll reconvene in 15 minutes
 Implement the plan!
 
 We've prepared a separate repository here:
-.link https://github.com/MarcGrol/patientregistration
+.link https://github.com/xebia/go-exercise
 
 Checkout the project on your laptop
 
-    $ git clone https://github.com/MarcGrol/patientregistration.git
+    $ git clone https://github.com/xebia/go-exercise.git
     $ cd patientregistration
     $ go install ./...
 
@@ -2438,7 +2438,7 @@ TODO
   generates cyclist_slice.go with "SortBy"- and "Where"-methods on CyclistSlice
 - Just commit and distribute with your package
 
-.link https://github.com/MarcGrol/go-training/blob/master/examples/generate/cyclist_slice.go cyclist_slice.go
+.link https://github.com/xebia/go-training/blob/master/examples/generate/cyclist_slice.go cyclist_slice.go
 #----------------------------------------------
 
 

@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	pb "github.com/MarcGrol/go-training/examples/grpc/notification/notificationapi"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	pb "github.com/xebia/go-training/examples/grpc/notification/notificationapi"
 )
 
 type server struct {

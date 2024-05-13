@@ -8,14 +8,12 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/datastorer"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/emailsender"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/pincoder"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/uuider"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/regprotobuf"
-
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/datastorer"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/emailsender"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/pincoder"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/uuider"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/regprotobuf"
 )
-
 
 func TestRegistrationWithEmail(t *testing.T) {
 	ctrl, uuidGenerator, mockStorer, mockPincoder, emailsender := setupDependencies(t)

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/MarcGrol/go-training/examples/slowapi"
+	"github.com/xebia/go-training/examples/slowapi"
 )
 
 func generator(numTasks int) <-chan int {

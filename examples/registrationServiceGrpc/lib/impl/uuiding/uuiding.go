@@ -1,8 +1,8 @@
 package uuiding
 
 import (
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/uuider"
 	"github.com/google/uuid"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/uuider"
 )
 
 type basicuuider struct{}

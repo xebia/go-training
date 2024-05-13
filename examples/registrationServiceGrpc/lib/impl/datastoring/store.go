@@ -1,8 +1,9 @@
 package datastoring
 
 import (
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/datastorer"
 	"sync"
+
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/datastorer"
 )
 
 type inMemoryPatientStore struct {

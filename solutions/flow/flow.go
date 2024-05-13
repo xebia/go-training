@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/MarcGrol/go-training/solutions/flow/calclib"
+	"github.com/xebia/go-training/solutions/flow/calclib"
 )
 
 func main() {

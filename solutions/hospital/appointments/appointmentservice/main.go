@@ -3,13 +3,13 @@ package main
 import (
 	"log"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/appointments/appointmentservice/appointmentstore"
+	"github.com/xebia/go-training/solutions/hospital/appointments/appointmentservice/appointmentstore"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/notifications/notificationapi"
+	"github.com/xebia/go-training/solutions/hospital/notifications/notificationapi"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/patients/patientinfoapi"
+	"github.com/xebia/go-training/solutions/hospital/patients/patientinfoapi"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/appointments/appointmentapi"
+	"github.com/xebia/go-training/solutions/hospital/appointments/appointmentapi"
 )
 
 func main() {

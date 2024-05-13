@@ -3,18 +3,19 @@ package main
 import (
 	"context"
 	"fmt"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"log"
 	"net"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/appointments/appointmentservice/appointmentstore"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+
+	"github.com/xebia/go-training/solutions/hospital/appointments/appointmentservice/appointmentstore"
 
 	"google.golang.org/grpc"
 
-	pb "github.com/MarcGrol/go-training/solutions/hospital/appointments/appointmentapi"
-	"github.com/MarcGrol/go-training/solutions/hospital/notifications/notificationapi"
-	"github.com/MarcGrol/go-training/solutions/hospital/patients/patientinfoapi"
+	pb "github.com/xebia/go-training/solutions/hospital/appointments/appointmentapi"
+	"github.com/xebia/go-training/solutions/hospital/notifications/notificationapi"
+	"github.com/xebia/go-training/solutions/hospital/patients/patientinfoapi"
 )
 
 type server struct {

@@ -2,7 +2,8 @@ package patient
 
 import (
 	"fmt"
-	"github.com/MarcGrol/go-training/examples/interfaces/datastore"
+
+	"github.com/xebia/go-training/examples/interfaces/datastore"
 )
 
 type Patient struct {

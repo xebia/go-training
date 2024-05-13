@@ -9,11 +9,11 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/datastorer"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/emailsender"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/pincoder"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/uuider"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/regprotobuf"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/datastorer"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/emailsender"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/pincoder"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/uuider"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/regprotobuf"
 )
 
 const (

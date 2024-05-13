@@ -4,10 +4,11 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/regprotobuf"
 	"log"
 	"os"
 	"time"
+
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/regprotobuf"
 )
 
 func main() {

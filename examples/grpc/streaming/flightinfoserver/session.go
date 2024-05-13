@@ -8,7 +8,7 @@ import (
 
 	"github.com/google/uuid"
 
-	pb "github.com/MarcGrol/go-training/examples/grpc/streaming/flightinfoapi"
+	pb "github.com/xebia/go-training/examples/grpc/streaming/flightinfoapi"
 )
 
 const (

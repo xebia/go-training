@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package notificationapi;
 
-option go_package = "github.com/MarcGrol/go-training/solutions/hospital/notifications/notificationapi";
+option go_package = "github.com/xebia/go-training/solutions/hospital/notifications/notificationapi";
 
 service Notification {
   rpc SendEmail (SendEmailRequest) returns (SendReply) {}

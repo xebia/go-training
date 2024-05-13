@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/MarcGrol/go-training/solutions/jsonxml/person"
+	"github.com/xebia/go-training/solutions/jsonxml/person"
 )
 
 const (

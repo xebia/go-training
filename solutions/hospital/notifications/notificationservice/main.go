@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/notifications/notificationapi"
+	"github.com/xebia/go-training/solutions/hospital/notifications/notificationapi"
 )
 
 type fakeEmailSender struct{}

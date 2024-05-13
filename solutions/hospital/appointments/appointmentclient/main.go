@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/appointments/appointmentapi"
+	"github.com/xebia/go-training/solutions/hospital/appointments/appointmentapi"
 )
 
 func main() {
