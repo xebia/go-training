@@ -2023,9 +2023,17 @@ Example with "Alice"
 * Exercise: http server
 
 - Create a HTTP server that supports POST on /api/patient to create a patient
-- Test it with your previously created HTTP-client
-- Create a unit test in which you simulate client behavior (using httptest-package)
+- Test it with curl or your previously created HTTP-client
 
+    # Example curl request to submit a new patient
+    curl -vvv \
+        -X POST \
+        --data '{"uid":"1", "fullName":"Marc","addressLine":"a","allergies":["peanut"]}' \
+        -H 'Content-Type: application/json' \
+        -H 'Accept: application/json' \
+        http://localhost:8080/api/patient
+
+- Create a unit test in which you simulate client behavior (using httptest-package)
 
 #----------------------------------------------
 * Tooling
