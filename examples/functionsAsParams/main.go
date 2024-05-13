@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/MarcGrol/go-training/examples/functionsAsParams/rigidFramework"
+	"github.com/xebia/go-training/examples/functionsAsParams/rigidFramework"
 )
 
 // START OMIT

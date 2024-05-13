@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/MarcGrol/go-training/solutions/smssending"
+	"github.com/xebia/go-training/solutions/smssending"
 )
 
 var PROGRAM = os.Args[0]

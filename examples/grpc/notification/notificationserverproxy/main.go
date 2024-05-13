@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	_ "github.com/MarcGrol/go-training/examples/grpc/notification/notificationapi"
+	_ "github.com/xebia/go-training/examples/grpc/notification/notificationapi"
 )
 
 func main() {

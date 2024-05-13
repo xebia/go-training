@@ -1,4 +1,4 @@
-module github.com/MarcGrol/go-training
+module github.com/xebia/go-training
 
 go 1.21
 

@@ -15,7 +15,7 @@ see also https://blog.golang.org/using-go-modules
     
 ## Create a go module
 
-    go mod init github.com/MarcGrol/gomodexperiment  # Outside GOPATH so need to tell complete import path
+    go mod init github.com/xebia/gomodexperiment  # Outside GOPATH so need to tell complete import path
 
 We encounter a new file: go.mod
 This file should be committed together with your source-code

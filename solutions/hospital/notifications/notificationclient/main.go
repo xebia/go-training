@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/notifications/notificationapi"
+	"github.com/xebia/go-training/solutions/hospital/notifications/notificationapi"
 )
 
 func main() {

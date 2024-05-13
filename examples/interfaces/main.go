@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/MarcGrol/go-training/examples/interfaces/datastore"
-	"github.com/MarcGrol/go-training/examples/interfaces/patient"
 	"log"
+
+	"github.com/xebia/go-training/examples/interfaces/datastore"
+	"github.com/xebia/go-training/examples/interfaces/patient"
 )
 
 // START OMIT

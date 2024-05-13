@@ -10,7 +10,7 @@ explained here: https://github.com/grpc-ecosystem/grpc-gateway
 
     go get -u github.com/golang/protobuf/protoc-gen-go
     
-    cd ${GOPATH}/github.com/MarcGrol/go-training/examples/grpc
+    cd ${GOPATH}/github.com/xebia/go-training/examples/grpc
     go generate ./...
     go install ./...
     

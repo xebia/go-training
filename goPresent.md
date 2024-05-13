@@ -9,10 +9,10 @@ Use the "present"-tool to "run" the presentation.
     $ go get golang.org/x/tools/cmd/present
     # present binary should now be in ${HOME}/go/bin 
 
-## Step 2 - Fetch the presentation from github
+## Step 2 - Fetch the presentation from GitHub
 
-    git clone https://github.com/MarcGrol/go-training.git
-    # presention is located in ${GOPATH}/github.com/MarcGrol/go-training
+    git clone https://github.com/xebia/go-training.git
+    # presention is located in ${GOPATH}/github.com/xebia/go-training
 
 ## Step 3 - Start presentation within the go-training directory
 

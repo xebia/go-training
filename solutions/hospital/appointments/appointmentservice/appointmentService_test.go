@@ -3,20 +3,21 @@ package main
 import (
 	"context"
 	"fmt"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"strings"
 	"testing"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"github.com/go-test/deep"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/appointments/appointmentapi"
-	"github.com/MarcGrol/go-training/solutions/hospital/appointments/appointmentservice/appointmentstore"
-	"github.com/MarcGrol/go-training/solutions/hospital/notifications/notificationapi"
-	"github.com/MarcGrol/go-training/solutions/hospital/patients/patientinfoapi"
+	"github.com/xebia/go-training/solutions/hospital/appointments/appointmentapi"
+	"github.com/xebia/go-training/solutions/hospital/appointments/appointmentservice/appointmentstore"
+	"github.com/xebia/go-training/solutions/hospital/notifications/notificationapi"
+	"github.com/xebia/go-training/solutions/hospital/patients/patientinfoapi"
 )
 
 func TestGetAppointmentsOnUser(t *testing.T) {

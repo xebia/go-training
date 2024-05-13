@@ -3,11 +3,11 @@ package main
 import (
 	"log"
 
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/impl/datastoring"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/impl/emailsending"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/impl/pincoding"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/impl/uuiding"
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/regprotobuf"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/impl/datastoring"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/impl/emailsending"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/impl/pincoding"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/impl/uuiding"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/regprotobuf"
 )
 
 func main() {

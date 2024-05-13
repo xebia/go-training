@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/MarcGrol/go-training/examples/grpc/notification/notificationapi"
+	"github.com/xebia/go-training/examples/grpc/notification/notificationapi"
 )
 
 const (

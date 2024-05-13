@@ -4,7 +4,7 @@ package appointmentapi;
 
 import "google/api/annotations.proto";
 
-option go_package = "github.com/MarcGrol/go-training/solutions/hospital/appointments/appointmentapi";
+option go_package = "github.com/xebia/go-training/solutions/hospital/appointments/appointmentapi";
 
 service AppointmentInternal {
   rpc GetAppointmentsOnStatus (GetAppointmentsOnStatusRequest) returns (GetAppointmentsReply);

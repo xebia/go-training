@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/MarcGrol/go-training/solutions/hospital/patients/patientinfoapi"
+	"github.com/xebia/go-training/solutions/hospital/patients/patientinfoapi"
 )
 
 func main() {

@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/MarcGrol/go-training/examples/slowapi"
 	"sync"
+
+	"github.com/xebia/go-training/examples/slowapi"
 )
 
 func doit(numTasks int) int {

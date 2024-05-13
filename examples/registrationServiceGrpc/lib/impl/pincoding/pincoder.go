@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/MarcGrol/go-training/examples/registrationServiceGrpc/lib/api/pincoder"
+	"github.com/xebia/go-training/examples/registrationServiceGrpc/lib/api/pincoder"
 )
 
 func init() {

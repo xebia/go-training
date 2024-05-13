@@ -3,14 +3,15 @@ package main
 import (
 	"context"
 	"fmt"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"log"
 	"net"
 
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+
 	"google.golang.org/grpc"
 
-	pb "github.com/MarcGrol/go-training/solutions/hospital/patients/patientinfoapi"
+	pb "github.com/xebia/go-training/solutions/hospital/patients/patientinfoapi"
 )
 
 type server struct {
