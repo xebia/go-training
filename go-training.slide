@@ -1940,24 +1940,6 @@ Tips:
 
 #----------------------------------------------
 
-* Exercise: http client
-
-- Create a patient using HTTP POST to https://gotrainingxebia.appspot.com/api/patient.
-
-    # Example curl request to submit a new patient
-    curl -vvv \
-        -X POST \
-        --data '{"uid":"1", "fullName":"Marc","addressLine":"a","allergies":["peanut"]}' \
-        -H 'Content-Type: application/json' \
-        -H 'Accept: application/json' \
-        https://gotrainingxebia.appspot.com/api/patient
-
-.link https://endpointsportal.gotrainingxebia.cloud.goog/ or play around with web-ui (demo)
-
-- Create a unit to test your http-client (simulate server behavior using httptest-package)
-
-#----------------------------------------------
-
 * HTTP server
 
 - Methods: POST, PUT, DELETE, GET AND HEAD
