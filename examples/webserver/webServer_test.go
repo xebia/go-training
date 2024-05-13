@@ -9,7 +9,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -25,10 +24,10 @@ func testNower() time.Time {
 
 func TestGet(t *testing.T) {
 	// setup
-	router := mux.NewRouter()
+	router := http.NewServeMux()
 	patientStore := newPatientStore(testNower)
 	sut := NewPatientService(testUUIDer, patientStore)
-	sut.RegisterEndpoint(router)
+	sut.RegisterEndpoints(router)
 
 	// given
 	p := Patient{
@@ -53,10 +52,10 @@ func TestGet(t *testing.T) {
 
 func TestPost(t *testing.T) {
 	// setup
-	router := mux.NewRouter()
+	router := http.NewServeMux()
 	patientStore := newPatientStore(testNower)
 	sut := NewPatientService(testUUIDer, patientStore)
-	sut.RegisterEndpoint(router)
+	sut.RegisterEndpoints(router)
 
 	// given
 
@@ -74,10 +73,10 @@ func TestPost(t *testing.T) {
 
 func TestPut(t *testing.T) {
 	// setup
-	router := mux.NewRouter()
+	router := http.NewServeMux()
 	patientStore := newPatientStore(testNower)
 	sut := NewPatientService(testUUIDer, patientStore)
-	sut.RegisterEndpoint(router)
+	sut.RegisterEndpoints(router)
 
 	// given
 	p := Patient{
@@ -103,10 +102,10 @@ func TestPut(t *testing.T) {
 
 func TestDelete(t *testing.T) {
 	// setup
-	router := mux.NewRouter()
+	router := http.NewServeMux()
 	patientStore := newPatientStore(testNower)
 	sut := NewPatientService(testUUIDer, patientStore)
-	sut.RegisterEndpoint(router)
+	sut.RegisterEndpoints(router)
 
 	// given
 	p := Patient{

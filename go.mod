@@ -1,6 +1,6 @@
 module github.com/MarcGrol/go-training
 
-go 1.21
+go 1.22
 
 require (
 	github.com/go-test/deep v1.1.0
