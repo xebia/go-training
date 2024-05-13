@@ -4,25 +4,19 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
-
-	"github.com/gorilla/mux"
 )
 
 // START OMIT
-
-func (s *patientWebService) RegisterEndpoint(router *mux.Router) *mux.Router {
-	subRouter := router.PathPrefix("/api/patient").Subrouter()
-	subRouter.HandleFunc("/{patientUid}", s.getPatient()).Methods("GET") // HL
-	subRouter.HandleFunc("", s.postPatient()).Methods("POST")
-	subRouter.HandleFunc("/{patientUid}", s.putPatient()).Methods("PUT")
-	subRouter.HandleFunc("/{patientUid}", s.deletePatient()).Methods("DELETE")
-	return router
+func (s *patientWebService) RegisterEndpoints(router *http.ServeMux) {
+	router.HandleFunc("GET /api/patient/{patientUid}", s.getPatient())
+	router.HandleFunc("POST /api/patient", s.postPatient())
+	router.HandleFunc("PUT /api/patient/{patientUid}", s.putPatient())
+	router.HandleFunc("DELETE /api/patient/{patientUid}", s.deletePatient())
 }
-
 func (s *patientWebService) getPatient() http.HandlerFunc { // HL
 	c := context.Background()
 	return func(w http.ResponseWriter, r *http.Request) {
-		patientUid := mux.Vars(r)["patientUid"]                  // extract path param
+		patientUid := r.PathValue("patientUid")                  // extract path param
 		response, found, err := s.getPatientOnUID(c, patientUid) // call business logic // HL
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
@@ -84,7 +78,7 @@ func (s *patientWebService) putPatient() http.HandlerFunc {
 		}
 
 		// parse url
-		patientUid := mux.Vars(r)["patientUid"] // extract path param
+		patientUid := r.PathValue("patientUid") // extract path param
 		patient.UID = patientUid
 
 		// call business logic
@@ -107,7 +101,7 @@ func (s *patientWebService) putPatient() http.HandlerFunc {
 func (s *patientWebService) deletePatient() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		c := context.Background()
-		patientUid := mux.Vars(r)["patientUid"] // extract path param
+		patientUid := r.PathValue("patientUid") // extract path param
 
 		// call business logic
 		err := s.deletePatientOnUid(c, patientUid)

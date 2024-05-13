@@ -1973,11 +1973,11 @@ Standard library provides API:
 - HTTP/2 capable
 - Each request runs in its own goroutine
 - Fileserver and reverse proxy included
+- Basic routing capabilities
 
 #----------------------------------------------
 
-* Example main: start server
-- Uses "github.com/gorilla/mux" for convenience in REST-urls
+* Example server with standard library
 
 .code examples/webserver/main.go /START OMIT/,/END OMIT/
 
@@ -1986,7 +1986,6 @@ Standard library provides API:
 * Example web-part contains no business logic
 
 .code examples/webserver/web.go /START OMIT/,/END OMIT/
-
 
 #----------------------------------------------
 
@@ -2014,6 +2013,15 @@ Standard library provides API:
         ...
     }
 
+
+#----------------------------------------------
+* 3rd party routers
+
+- Advanced routing capabilities such as grouping
+- Better middleware support
+- Examples:
+    - gorilla/mux
+    - go-chi/chi
 
 
 #----------------------------------------------

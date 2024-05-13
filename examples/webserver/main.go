@@ -8,14 +8,12 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-
-	"github.com/gorilla/mux"
 )
 
 // START OMIT
 
 func main() {
-	router := mux.NewRouter()
+	router := http.NewServeMux()
 
 	uider := func() string {
 		return uuid.New().String()
@@ -26,7 +24,7 @@ func main() {
 
 	store := newPatientStore(nower)
 	webService := NewPatientService(uider, store)
-	webService.RegisterEndpoint(router)
+	webService.RegisterEndpoints(router)
 
 	port := os.Getenv("PORT")
 	if port == "" {
