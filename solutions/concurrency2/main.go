@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 
 	"github.com/xebia/go-training/examples/slowapi"
 )
@@ -32,9 +33,10 @@ func calculateSum(allResults []int) int {
 }
 
 func main() {
+	start := time.Now()
 	const taskCount = 10000
-
 	sum := doit(taskCount)
-
 	fmt.Printf("Got sum %d\n", sum)
+	fmt.Printf(time.Now().Sub(start).String())
+
 }
