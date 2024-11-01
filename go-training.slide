@@ -914,6 +914,34 @@ Empty interface in the past:
 - Used by standard json and xml packages to (un) serialize
 
 #----------------------------------------------
+* Constructor function
+
+    type DataStorer interface {
+    	...
+    }
+
+    type PatientDatastore struct {}
+
+    func New() DataStorer {
+    	return &PatientDatastore{}
+    }
+
+TIP: Write the constructor function first and let your IDE do the rest!
+
+Use a pointer if the struct is large, or you want to modify the state
+
+Implementation without constructor function:
+
+    type Service interface {
+        ...
+    }
+    var _ Service = (*MockDeviceService)(nil)
+
+    type MockDeviceService struct {}
+
+
+
+#----------------------------------------------
 
 * Exercise: interfaces
 
@@ -931,7 +959,6 @@ Tasks:
     	Remove(key string) error
     }
 
-TIP: Create a constructor function and let your IDE do the magic
 TIP: Use a map as in-memory datastore
 
     Peek: examples/interfaces
