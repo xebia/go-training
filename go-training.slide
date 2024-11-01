@@ -1530,6 +1530,12 @@ Alternative approaches:
 
 #----------------------------------------------
 
+* Divide the work <channels + waitgroups>
+
+.play -edit examples/channels/waitgroups/waitgroups.go /START OMIT/,/END OMIT/
+
+#----------------------------------------------
+
 * Select example <select>
 - Wait for events on multiple channels
 
