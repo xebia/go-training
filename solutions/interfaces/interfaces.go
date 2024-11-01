@@ -1,10 +1,21 @@
 package interfaces
 
+type Patient struct {
+	UID  string
+	Name string
+}
+
+type Datastorer interface {
+	Put(key string, patient any) error
+	Get(key string) (any, bool, error)
+	Remove(key string) error
+}
+
 type inMemoryPatientDatastore struct {
 	data map[string]Patient
 }
 
-func newInMemoryPatientDatastore() Datastorer {
+func New() Datastorer {
 	return &inMemoryPatientDatastore{
 		data: map[string]Patient{},
 	}
