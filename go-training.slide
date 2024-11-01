@@ -1530,15 +1530,15 @@ Alternative approaches:
 
 #----------------------------------------------
 
-* Divide the work <channels + waitgroups>
+* Divide the work <channels + waitgroup>
 
-.play -edit examples/channels/waitgroups/waitgroups.go /START OMIT/,/END OMIT/
+.play -edit examples/channels/waitgroup/waitgroup.go /START OMIT/,/END OMIT/
 
 #----------------------------------------------
 
 * Divide the work <channels + errgroup>
 
-.play -edit examples/channels/errgroups/errgroups.go /START OMIT/,/END OMIT/
+.play -edit examples/channels/errgroup/errgroup.go /START OMIT/,/END OMIT/
 
 #----------------------------------------------
 
