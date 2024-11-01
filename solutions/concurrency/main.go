@@ -39,8 +39,10 @@ func waitforCompletion(responseChannel <-chan int, taskCount int) (int, int) {
 }
 
 func main() {
+	start := time.Now()
 	const taskCount = 10000
 	responseChannel := generator(taskCount)
 	sum, responseCount := waitforCompletion(responseChannel, taskCount)
 	fmt.Printf("Got sum %d based on %d responses\n", sum, responseCount)
+	fmt.Printf(time.Now().Sub(start).String())
 }
