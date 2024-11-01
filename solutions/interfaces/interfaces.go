@@ -5,7 +5,7 @@ type Patient struct {
 	Name string
 }
 
-type Datastorer interface {
+type DataStorer interface {
 	Put(key string, patient any) error
 	Get(key string) (any, bool, error)
 	Remove(key string) error
@@ -15,7 +15,7 @@ type inMemoryPatientDatastore struct {
 	data map[string]Patient
 }
 
-func New() Datastorer {
+func New() DataStorer {
 	return &inMemoryPatientDatastore{
 		data: map[string]Patient{},
 	}

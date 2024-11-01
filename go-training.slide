@@ -931,7 +931,7 @@ Tasks:
     	Remove(key string) error
     }
 
-TIP: Create a constructor function ans let your IDE do the magic
+TIP: Create a constructor function and let your IDE do the magic
 TIP: Use a map as in-memory datastore
 
     Peek: examples/interfaces
