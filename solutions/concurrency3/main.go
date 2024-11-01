@@ -2,26 +2,33 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"golang.org/x/sync/errgroup"
+	"log"
 	"time"
 
 	"github.com/xebia/go-training/examples/slowapi"
 )
 
-func doit(numTasks int) int {
-	wg := sync.WaitGroup{}
-
+func doit(numTasks int) (int, error) {
+	g := errgroup.Group{}
 	allResults := make([]int, numTasks)
-	for i := 0; i < numTasks; i++ {
-		wg.Add(1)
-		go func(idx int) {
-			allResults[idx] = slowapi.Sum(idx, idx)
-			wg.Done()
-		}(i)
-	}
-	wg.Wait()
 
-	return calculateSum(allResults)
+	for i := 0; i < numTasks; i++ {
+
+		i := i // pre 1.23: Capture loop variable. No longer needed after 1.23 🙌
+
+		g.Go(func() error {
+			allResults[i] = slowapi.Sum(i, i)
+			return nil
+		})
+	}
+
+	if err := g.Wait(); err != nil {
+		return 0, err
+	}
+
+	return calculateSum(allResults), nil
+
 }
 
 func calculateSum(allResults []int) int {
@@ -35,7 +42,10 @@ func calculateSum(allResults []int) int {
 func main() {
 	start := time.Now()
 	const taskCount = 10000
-	sum := doit(taskCount)
+	sum, err := doit(taskCount)
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("Got sum %d\n", sum)
 	fmt.Printf(time.Now().Sub(start).String())
 

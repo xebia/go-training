@@ -1530,6 +1530,18 @@ Alternative approaches:
 
 #----------------------------------------------
 
+* Divide the work <channels + waitgroup>
+
+.play -edit examples/channels/waitgroup/waitgroup.go /START OMIT/,/END OMIT/
+
+#----------------------------------------------
+
+* Divide the work <channels + errgroup>
+
+.play -edit examples/channels/errgroup/errgroup.go /START OMIT/,/END OMIT/
+
+#----------------------------------------------
+
 * Select example <select>
 - Wait for events on multiple channels
 
@@ -1563,10 +1575,11 @@ Tasks:
 
 - Same but wait no more than 1 second (ignore the rest). Also report the number of results received.
 
-    // 2 solution examples
+    // 3 solution examples
 
     Peek:solutions/concurrency
     Peek:solutions/concurrency2
+    Peek:solutions/concurrency3
 
 
 #----------------------------------------------
