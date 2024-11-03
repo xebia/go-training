@@ -1,8 +1,8 @@
 package main
 
 import (
+	"cmp"
 	"fmt"
-	"golang.org/x/exp/constraints"
 )
 
 // START OMIT
@@ -18,11 +18,10 @@ func main() {
 	fmt.Println(Max(5.1, 1.3))
 }
 
-// Max takes custom type parameter T of type constraints.Ordered: any type that is order-able
-// Ordered is a constraint that permits any ordered type:
+// Max takes custom type parameter T of type cmp.Ordered: any type that is order-able
+// Ordered is a comparable type that permits any ordered type:
 // any type that supports the operators < <= >= >.
-// constraints.Ordered is still in experimental phase
-func Max[T constraints.Ordered](x T, y T) T {
+func Max[T cmp.Ordered](x T, y T) T {
 	if x > y {
 		return x
 	}

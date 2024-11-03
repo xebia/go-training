@@ -1,42 +1,50 @@
 package main
 
 import (
+	"bytes"
+	"context"
 	"encoding/json"
+	"github.com/stretchr/testify/assert"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func TestServer(t *testing.T) {
-	// mock response
-	recorder := httptest.NewRecorder()
+	ctx := context.Background()
 
-	// create a http request that triggers your server
-	req, _ := http.NewRequest("GET", "", nil)
-	req.RemoteAddr = "1.2.3.4"
-	req.RequestURI = "/doit?arg1=1&arg2=two"
-	req.Header.Set("Accept", "application/json")
+	s := Server{router: http.NewServeMux()}
 
-	// call subject of test
-	eh := echoHandler{true}
-	eh.ServeHTTP(recorder, req)
+	cpr := CreatePatientRequest{Patient{
+		FullName:    "Patrick",
+		AddressLine: "a",
+		Allergies:   []string{"cilantro"},
+	}}
 
-	//  verify response
-	assert.Equal(t, http.StatusOK, recorder.Code)
+	b, err := json.Marshal(cpr)
 
-	// decode json
-	dec := json.NewDecoder(recorder.Body)
-	var resp Response
-	err := dec.Decode(&resp)
-
-	//  json body
 	assert.NoError(t, err)
-	assert.Equal(t, "1.2.3.4", resp.Origin)
-	assert.Equal(t, "/doit", resp.Url)
-	assert.Equal(t, "1", resp.Args["arg1"][0])
-	assert.Equal(t, "two", resp.Args["arg2"][0])
-	assert.Equal(t, "application/json", resp.Headers["Accept"][0])
+
+	req, err := http.NewRequestWithContext(ctx, "POST", "/api/patient", bytes.NewBuffer(b))
+	assert.NoError(t, err)
+
+	w := httptest.NewRecorder()
+
+	s.createPatientHandler().ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	resp := CreatePatientResponse{}
+	body, err := io.ReadAll(w.Body)
+	assert.NoError(t, err)
+
+	err = json.Unmarshal(body, &resp)
+	assert.NoError(t, err)
+
+	assert.Equal(t, "Patrick", resp.FullName)
+	assert.Equal(t, "a", resp.AddressLine)
+	assert.Len(t, resp.Allergies, 1)
+	assert.Equal(t, "cilantro", resp.Allergies[0])
 
 }

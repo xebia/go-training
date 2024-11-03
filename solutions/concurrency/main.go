@@ -18,7 +18,7 @@ func generator(numTasks int) <-chan int {
 	return responseChannel
 }
 
-func waitforCompletion(responseChannel <-chan int, taskCount int) (int, int) {
+func waitForCompletion(responseChannel <-chan int, taskCount int) (int, int) {
 	// only half of the tasks should be completed in 1 sec
 	terminationChannel := time.After(10 * time.Second)
 
@@ -39,8 +39,10 @@ func waitforCompletion(responseChannel <-chan int, taskCount int) (int, int) {
 }
 
 func main() {
+	start := time.Now()
 	const taskCount = 10000
 	responseChannel := generator(taskCount)
-	sum, responseCount := waitforCompletion(responseChannel, taskCount)
+	sum, responseCount := waitForCompletion(responseChannel, taskCount)
 	fmt.Printf("Got sum %d based on %d responses\n", sum, responseCount)
+	fmt.Printf(time.Now().Sub(start).String())
 }

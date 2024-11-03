@@ -1,5 +1,5 @@
 Learning go
-January 25th, 2024
+November 4th, 2024
 Tags: go golang xebia
 
 Patrick Akil
@@ -19,7 +19,7 @@ https://www.linkedin.com/in/patrick-akil-721b07105/
 
 - IoT, Ecommerce, Health Tech
 - Effectiveness: organisational, team and personal
-- Running golang in production @Wavin, @Duxxie & more!
+- Running golang in production @Wavin, @Action, @Duxxie & more!
 
 #----------------------------------------------
 
@@ -215,7 +215,7 @@ Verify go:
 
     $ go version
 
-At least version go1.18
+At least version go1.23
 
 No output means something's missing!
 
@@ -867,7 +867,7 @@ io.Writer-interface:
 #----------------------------------------------
 
 * Interface <interfaces>
-- Naming convention: ends with "er"
+- Naming convention: ends with "er". Doesn't happen too much in practise 😅
 - Keep them small. Why?
 - Composable
 
@@ -1530,6 +1530,18 @@ Alternative approaches:
 
 #----------------------------------------------
 
+* Divide the work <channels + waitgroup>
+
+.play -edit examples/channels/waitgroup/waitgroup.go /START OMIT/,/END OMIT/
+
+#----------------------------------------------
+
+* Divide the work <channels + errgroup>
+
+.play -edit examples/channels/errgroup/errgroup.go /START OMIT/,/END OMIT/
+
+#----------------------------------------------
+
 * Select example <select>
 - Wait for events on multiple channels
 
@@ -1563,10 +1575,11 @@ Tasks:
 
 - Same but wait no more than 1 second (ignore the rest). Also report the number of results received.
 
-    // 2 solution examples
+    // 3 solution examples
 
     Peek:solutions/concurrency
     Peek:solutions/concurrency2
+    Peek:solutions/concurrency3
 
 
 #----------------------------------------------
@@ -1972,7 +1985,6 @@ Tips:
 - Methods: POST, PUT, DELETE, GET AND HEAD
 - Url: REST-ful?
 - Payload: Json, XML
-- Middleware for non-functionals (CORS, Auth, Monitoring)
 - Response status-code and error-message
 
 Based on Swagger/OpenApi-spec?
@@ -2024,38 +2036,17 @@ Standard library provides API:
 
 
 #----------------------------------------------
-* 3rd party routers
-
-- Advanced routing capabilities such as grouping
-- Better middleware support
-- Examples:
-    - gorilla/mux
-    - go-chi/chi
-
-
-#----------------------------------------------
-
-* Middleware <middleware>
-
-- Like Java "servlet filters"
-
-Example with "Alice"
-
-.code examples/middleware/main.go /START OMIT/,/END OMIT/
-
-- Later more on middleware functions
-
-#----------------------------------------------
 
 * Exercise: http server
 
-- Create a HTTP server that supports POST on /api/patient to create a patient
-- Test it with curl or your previously created HTTP-client
+- Create an HTTP server that supports POST on /api/patient to create a patient
+- Simulate storing the patient object and return the patient including an ID
+- Test it with curl or a created HTTP-client
 
     # Example curl request to submit a new patient
     curl -vvv \
         -X POST \
-        --data '{"uid":"1", "fullName":"Marc","addressLine":"a","allergies":["peanut"]}' \
+        --data '{"fullName":"Marc","addressLine":"a","allergies":["peanut"]}' \
         -H 'Content-Type: application/json' \
         -H 'Accept: application/json' \
         http://localhost:8080/api/patient
