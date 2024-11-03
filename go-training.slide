@@ -2062,13 +2062,14 @@ Example with "Alice"
 
 * Exercise: http server
 
-- Create a HTTP server that supports POST on /api/patient to create a patient
-- Test it with curl or your previously created HTTP-client
+- Create an HTTP server that supports POST on /api/patient to create a patient
+- Simulate storing the patient object and return the patient including an ID
+- Test it with curl or a created HTTP-client
 
     # Example curl request to submit a new patient
     curl -vvv \
         -X POST \
-        --data '{"uid":"1", "fullName":"Marc","addressLine":"a","allergies":["peanut"]}' \
+        --data '{"fullName":"Marc","addressLine":"a","allergies":["peanut"]}' \
         -H 'Content-Type: application/json' \
         -H 'Accept: application/json' \
         http://localhost:8080/api/patient

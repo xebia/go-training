@@ -1,75 +1,98 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"github.com/google/uuid"
+	"io"
 	"log"
 	"net/http"
-	"net/url"
 )
 
-type Response struct {
-	Origin  string              `json:"origin"`
-	Method  string              `json:"method"`
-	Url     string              `json:"url"`
-	Args    map[string][]string `json:"args"`
-	Headers map[string][]string `json:"headers"`
-	Body    string              `json:"body"`
-}
-
-type echoHandler struct {
-	debug bool
-}
-
-func (eh *echoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	u, _ := url.Parse(r.RequestURI)
-	params, _ := url.ParseQuery(u.RawQuery)
-	var body string
-	if r.Body != nil {
-		asBytes, _ := ioutil.ReadAll(r.Body)
-		if asBytes != nil {
-			body = string(asBytes)
-		}
-	}
-	resp := Response{
-		Origin:  r.RemoteAddr,
-		Method:  r.Method,
-		Url:     u.Path,
-		Args:    params,
-		Headers: r.Header,
-		Body:    body,
-	}
-
-	if eh.debug {
-		log.Printf("Got %s on %s from %s:%s", r.Method, r.RequestURI, r.RemoteAddr, string(body))
-	}
-
-	// Encode json
-	jsonResp, err := json.Marshal(resp)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-
-	// write headers
-	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/json")
-
-	// write formatted json body
-	var formattedResp bytes.Buffer
-	json.Indent(&formattedResp, jsonResp, "", "\t")
-	w.Write(formattedResp.Bytes())
-
+type Server struct {
+	router *http.ServeMux
 }
 
 func main() {
-	mux := http.NewServeMux()
+	s := &Server{
+		router: http.NewServeMux(),
+	}
 
-	h := &echoHandler{debug: true}
-	mux.Handle("/", h)
+	s.router.HandleFunc("POST /api/patient", s.createPatientHandler())
 
-	fmt.Printf("Start listening at http://localhost:3000/\n")
-	http.ListenAndServe(":3000", mux)
+	addr := "localhost:8080"
+
+	fmt.Printf("Start listening at %s", addr)
+	err := http.ListenAndServe(addr, s.router)
+
+	if err != nil {
+		log.Fatal("could not start server")
+	}
+}
+
+type CreatePatientRequest struct {
+	Patient
+}
+
+type CreatePatientResponse struct {
+	UID string `json:"uid,omitempty"`
+	Patient
+}
+
+type Patient struct {
+	FullName    string   `json:"fullName,omitempty"`
+	AddressLine string   `json:"addressLine,omitempty"`
+	Allergies   []string `json:"allergies,omitempty"`
+}
+
+func (s *Server) createPatientHandler() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+			return
+		}
+		body, err := io.ReadAll(r.Body)
+
+		if err != nil {
+			http.Error(w, "Unable to read request body", http.StatusBadRequest)
+			return
+		}
+		defer func(body io.ReadCloser) {
+			err := body.Close()
+			if err != nil {
+				// log error
+			}
+		}(r.Body)
+
+		cpr := CreatePatientRequest{}
+		err = json.Unmarshal(body, &cpr)
+		if err != nil {
+			http.Error(w, "Unable to read request body", http.StatusBadRequest)
+			return
+		}
+
+		patient := cpr.Patient
+		patientID, err := s.CreatePatient(patient)
+
+		resp := CreatePatientResponse{
+			UID:     patientID,
+			Patient: patient,
+		}
+
+		b, err := json.Marshal(resp)
+
+		_, err = w.Write(b)
+
+		if err != nil {
+			http.Error(w, fmt.Sprintf("could not write response: %s", err), http.StatusInternalServerError)
+		}
+	}
+
+}
+
+func (s *Server) CreatePatient(p Patient) (string, error) {
+	uid := uuid.New().String()
+	fmt.Printf("storing patient %+v, with uid %s", p, uid)
+
+	return uid, nil
 }
