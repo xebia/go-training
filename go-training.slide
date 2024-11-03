@@ -1,5 +1,5 @@
 Learning go
-January 25th, 2024
+November 4th, 2024
 Tags: go golang xebia
 
 Patrick Akil
@@ -19,7 +19,7 @@ https://www.linkedin.com/in/patrick-akil-721b07105/
 
 - IoT, Ecommerce, Health Tech
 - Effectiveness: organisational, team and personal
-- Running golang in production @Wavin, @Duxxie & more!
+- Running golang in production @Wavin, @Action, @Duxxie & more!
 
 #----------------------------------------------
 
@@ -215,7 +215,7 @@ Verify go:
 
     $ go version
 
-At least version go1.18
+At least version go1.23
 
 No output means something's missing!
 
@@ -867,7 +867,7 @@ io.Writer-interface:
 #----------------------------------------------
 
 * Interface <interfaces>
-- Naming convention: ends with "er"
+- Naming convention: ends with "er". Doesn't happen too much in practise 😅
 - Keep them small. Why?
 - Composable
 
@@ -1985,7 +1985,6 @@ Tips:
 - Methods: POST, PUT, DELETE, GET AND HEAD
 - Url: REST-ful?
 - Payload: Json, XML
-- Middleware for non-functionals (CORS, Auth, Monitoring)
 - Response status-code and error-message
 
 Based on Swagger/OpenApi-spec?
@@ -2035,28 +2034,6 @@ Standard library provides API:
         ...
     }
 
-
-#----------------------------------------------
-* 3rd party routers
-
-- Advanced routing capabilities such as grouping
-- Better middleware support
-- Examples:
-    - gorilla/mux
-    - go-chi/chi
-
-
-#----------------------------------------------
-
-* Middleware <middleware>
-
-- Like Java "servlet filters"
-
-Example with "Alice"
-
-.code examples/middleware/main.go /START OMIT/,/END OMIT/
-
-- Later more on middleware functions
 
 #----------------------------------------------
 
