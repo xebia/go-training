@@ -1179,6 +1179,24 @@ Use in test:
     assert.Equal(t, "a", appointment.AppointmentUID)
     ....
 
+#----------------------------------------------
+* Disabling test caching
+
+    go help test
+
+    The idiomatic way to disable
+    test caching explicitly is to use -count=1.
+    ...
+    A cached test result is treated as executing
+    in no time at all, so a successful package test result will be cached and
+    reused regardless of -timeout setting.
+
+
+Run tests with:
+
+    go test -count=1 ./...
+
+
 
 #----------------------------------------------
 * Exercise unit test
