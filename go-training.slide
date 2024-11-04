@@ -1815,18 +1815,21 @@ Note:
 Create a new package outside go-training
 
     // assume your code builds and tests
-    go mod init github.com/my/project    # creates a new go.mod and go.sum files
-    go install ./... && go test ./...    # adds regular and test dependencies
-    go list -m all
-    go mod tidy                          # removes unused dependencies
-    cat go.mod                           # you should commit this file
-    cat go.sum                           # you should commit this file
+    go mod init github.com/my/project   # creates a new go.mod and go.sum files
+    go install ./...                    # builds + installs all packages and places it in $GOPATH/bin
+
+    go test ./...                       # runs all tests
+    go list -m all                      # list all modules
+
+    go mod tidy                         # removes unused dependencies
 
 Upgrade a module
 
     go list -m -versions github.com/my/dependency1 # list versions of a module
     go get github.com/my/dependency1               # latest
     go get github.com/other/dependency2@v1.0.3     # specfic version of githash
+
+    go get -u ./...                                # update everything
 
 #----------------------------------------------
 
