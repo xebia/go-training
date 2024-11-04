@@ -1755,7 +1755,7 @@ Tasks:
 * The old way
 
 - Use "go get" to fetch latest and greatest versions of your dependencies
-- Rely on well behaving citizens: backwards compatility
+- Rely on well behaving citizens: backwards compatability
 - Repair work unpredictable: Upgrade your own code or offer pr on dependency
 - Okay when you test, build and deploy every day
 
