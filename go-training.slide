@@ -1369,11 +1369,11 @@ Consequences:
 #----------------------------------------------
 * Exercise dependency injection
 
-Create a new directory in the exercises directory
-
-    exercises/maketestable
-
 Tasks:
+
+- Rewrite the nontestable code in the following directory directory
+
+    examples/nontestable
 
 - Write unit tests for the package
 
