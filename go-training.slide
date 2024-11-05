@@ -2118,6 +2118,9 @@ Standard library provides API:
 
 - Create a unit test in which you simulate client behavior (using httptest-package)
 
+    Peek: solutions/examples/httpserver/server.go
+    Peek: solutions/examples/httpserver/server_test.go
+
 #----------------------------------------------
 * Tooling
 #----------------------------------------------
