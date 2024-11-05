@@ -1726,7 +1726,7 @@ If you ever use GRPC...
     }
 
 
-	user, err := NewSpannerIterator(User).ToSingleResult() // uses generic spanner iterator
+	user, err := NewSpannerIterator[User](iter).ToSingleResult() // uses generic spanner iterator
 
 
 
