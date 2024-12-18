@@ -2,8 +2,8 @@
 all: gen fmt test install
 
 deps:
-	go get -u golang.org/x/tools/cmd/goimports
-	go get -u golang.org/x/lint/golint
+	go install golang.org/x/tools/cmd/goimports@latest
+	go install golang.org/x/lint/golint@latest
 
 gen:
 	go generate ./...
