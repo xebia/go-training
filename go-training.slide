@@ -13,7 +13,7 @@ https://www.linkedin.com/in/patrick-akil-721b07105/
 
 #----------------------------------------------
 
-* About me
+* About Patrick
 .image examples/images/microphone.JPG  305 456
 - Fitness, Podcasting, Content creation
 
@@ -22,6 +22,19 @@ https://www.linkedin.com/in/patrick-akil-721b07105/
 - Running golang in production @Wavin, @Action, @Duxxie & more!
 
 #----------------------------------------------
+* About Kubilay
+
+.image examples/images/kubi.png  317 423
+
+- Moved to Netherlands 3 years ago with my wife from Turkey 🇹🇷
+- I like travelling, reading & watching science fiction, history
+
+- Specialised in backend development, mostly Java & Kotlin and now Golang
+- Running golang in production @Action
+
+
+#----------------------------------------------
+
 
 * About you
 - Who are you?
@@ -1004,6 +1017,46 @@ TIP: Use a map as in-memory datastore
 
 #----------------------------------------------
 
+* Multi-line defers
+
+     func doit() {
+        defer func() {
+            // code to
+            //    cleanup
+            //       resource
+            // with error-handling an logging
+        }()
+        ....
+     }
+
+#----------------------------------------------
+
+* Cleanup
+
+    func NewGrpcClient(addressPort string) (NotificationClient, func(), error) {
+        // Prepare connection to the server.
+        conn, err := grpc.Dial(addressPort, grpc.WithInsecure(), grpc.WithBlock())
+        if err != nil {
+            return nil, nil , fmt.Errorf("Error creating notifapi-grpc-client: %v", err)
+        }
+        cleanup := func() {
+            if conn != nil {
+                conn.Close()
+            }
+        }
+        return NewNotificationClient(conn), cleanup, nil
+    }
+
+    func doit() error {
+        client, cleanup, err := NewGrpcClient(":16123")
+        if err != nil {
+            return err
+        }
+        defer cleanup()
+    .....
+
+#----------------------------------------------
+
 * Variadic functions <variadic>
 .play -edit examples/variadic/variadic.go
 
@@ -1054,46 +1107,6 @@ TIP: Use a map as in-memory datastore
 Combine with go routines to execute work in background
 
 .play -edit examples/fireforget/main.go /START OMIT/,/END OMIT/
-
-#----------------------------------------------
-
-* Multi-line defers
-
-     func doit() {
-        defer func() {
-            // code to
-            //    cleanup
-            //       resource
-            // with error-handling an logging
-        }()
-        ....
-     }
-
-#----------------------------------------------
-
-* Cleanup
-
-    func NewGrpcClient(addressPort string) (NotificationClient, func(), error) {
-        // Prepare connection to the server.
-        conn, err := grpc.Dial(addressPort, grpc.WithInsecure(), grpc.WithBlock())
-        if err != nil {
-            return nil, nil , fmt.Errorf("Error creating notifapi-grpc-client: %v", err)
-        }
-        cleanup := func() {
-            if conn != nil {
-                conn.Close()
-            }
-        }
-        return NewNotificationClient(conn), cleanup, nil
-    }
-
-    func doit() error {
-        client, cleanup, err := NewGrpcClient(":16123")
-        if err != nil {
-            return err
-        }
-        defer cleanup()
-    .....
 
 #----------------------------------------------
 
