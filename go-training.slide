@@ -75,6 +75,7 @@ Now
 - Interfaces
 - More on functions
 - Testing
+- Context
 - Concurrency
 - Generics
 - & More!
@@ -1450,6 +1451,52 @@ Tasks:
 - Race condition detection
 - Continuous integration
 
+
+#----------------------------------------------
+* Context
+#----------------------------------------------
+* Context
+
+The context type carries deadlines, cancellation signals, across API boundaries and between processes.
+
+- Incoming requests to a server should create a Context.
+
+- Outgoing calls to servers should accept a Context.
+
+The Context should be the first parameter, typically named ctx:
+
+    func (s *service) SendEmail(ctx context.Context, recipientAddress string, body string) error {
+        ...
+    }
+
+#----------------------------------------------
+* Context
+
+.image examples/images/context.PNG  345 775
+#----------------------------------------------
+* Context
+
+Default context
+
+    ctx := context.Background()
+
+Context with cancel
+
+    ctx, cancel := context.WithCancel(context.Background())
+    defer cancel()
+
+Context with timeout
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5 * time.Second)
+	defer cancel()
+
+Context with assigned value
+
+	ip := "192.0.2.1"
+	ctx := context.WithValue(context.Background(), "userIP", ip)
+	ctx.Value("userIP")
+
+
 #----------------------------------------------
 * Concurrency
 #----------------------------------------------
@@ -1611,51 +1658,6 @@ Tasks:
     Peek:solutions/concurrency
     Peek:solutions/concurrency2
     Peek:solutions/concurrency3
-
-
-#----------------------------------------------
-* Context
-#----------------------------------------------
-* Context
-
-The context type carries deadlines, cancellation signals, across API boundaries and between processes.
-
-- Incoming requests to a server should create a Context.
-
-- Outgoing calls to servers should accept a Context.
-
-The Context should be the first parameter, typically named ctx:
-
-    func (s *service) SendEmail(ctx context.Context, recipientAddress string, body string) error {
-        ...
-    }
-
-#----------------------------------------------
-* Context
-
-.image examples/images/context.PNG  345 775
-#----------------------------------------------
-* Context
-
-Default context
-
-    ctx := context.Background()
-
-Context with cancel
-
-    ctx, cancel := context.WithCancel(context.Background())
-    defer cancel()
-
-Context with timeout
-
-	ctx, cancel := context.WithTimeout(context.Background(), 5 * time.Second)
-	defer cancel()
-
-Context with assigned value
-
-	ip := "192.0.2.1"
-	ctx := context.WithValue(context.Background(), "userIP", ip)
-	ctx.Value("userIP")
 
 #----------------------------------------------
 * Generics
