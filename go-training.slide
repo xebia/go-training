@@ -128,12 +128,11 @@ Missing in go:
 - Inheritance (but has "embedding" to compose)
 - Exceptions
 - Annotations
-- Mutability
 
 Missing in java:
 
 - Rich standard library and toolchain
-- Built-in concurrency
+- Simplicity and Minimalism
 
 #----------------------------------------------
 
