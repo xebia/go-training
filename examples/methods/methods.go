@@ -23,10 +23,7 @@ func (p *Patient) MarkHealthy() { // has side effect
 }
 
 func main() {
-	opa := Patient{
-		Name:     "Hans",
-		YearBorn: 1940,
-	}
+	opa := Patient{Name: "Hans", YearBorn: 1940}
 	log.Printf("high-risk: %+v\n", opa.HasHighRiskOnDisease())
 	opa.MarkHealthy()
 	log.Printf("after: %+v\n", opa)
