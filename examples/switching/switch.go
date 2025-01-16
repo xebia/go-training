@@ -13,7 +13,6 @@ func unhex(c byte) byte {
 	}
 	return 0
 }
-
 func shouldEscape(c byte) bool {
 	switch c {
 	case ' ', '?', '&', '=', '#', '+', '%':

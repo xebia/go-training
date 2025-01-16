@@ -21,10 +21,10 @@ type Study struct {
 
 // END OMIT
 
-func CreateStudent(fullName, adddressLine string, birthdate time.Time, studyName string, progressYear int) Student {
+func CreateStudent(fullName, addressLine string, birthdate time.Time, studyName string, progressYear int) Student {
 	return Student{
 		FullName:    fullName,
-		AddressLine: adddressLine,
+		AddressLine: addressLine,
 		BirthDate:   birthdate,
 		Study: Study{
 			Name: studyName,

@@ -123,17 +123,19 @@ Also works for us
 
 * Differences with Java
 
-Missing in go:
+Java:
 
-- Constructors (but uses "constructor" functions)
-- Inheritance (but has "embedding" to compose)
-- Exceptions
-- Annotations
+- Has constructors (Go uses “constructor” functions instead)
+- Supports inheritance (Go uses “embedding” for composition instead)
+- Has exceptions
+- Supports annotations
+- Allows mutability by default
 
-Missing in java:
+Go:
 
-- Rich standard library and toolchain
+- Provides out-of-the-box support for testing, HTTP, JSON, XML, code formatting and more
 - Simplicity and Minimalism
+- Uses lightweight goroutines for concurrency instead of threads (Project Loom brings lightweight threads to Java)
 
 #----------------------------------------------
 
@@ -557,7 +559,7 @@ Tasks:
 
 TIP:
 
-- File access using the "io/ioutil"-package ("os" nowadays)
+- Read the file using "os.Readline"
 - Capitalize using "strings" or "bytes"-package
 
     Peek: solutions/errorhandling
@@ -571,7 +573,7 @@ TIP:
 * Struct <struct>
 
 - Equivalent to Java class
-- Case of variable determines accessibility (private, public)
+- Case of a field determines accessibility (private, public)
 
 .play -edit examples/struct/struct.go /START OMIT/,/END OMIT/
 
@@ -727,9 +729,25 @@ Tasks:
 - map
 
 #----------------------------------------------
+* Arrays
+- Fixed size, cannot add new elements
+- Can contain everything: primitives, structs, slices, maps etc
+- Unassigned elements get the type’s zero value.
+- Supported operations:
+
+    replace, get-on-idx, get-on-range, iterate
+
+Initialisation:
+
+    var arr1 [4]int                             // capacity 4, all zero
+    arr2 := [4]int{10, 20, 30, 40}              // capacity 4, with initial data
+    arr3 := [...]string{"Voetbal", "Hockey"}    // let the compiler decide the capacity
+
+#----------------------------------------------
 
 * Slices
 
+- Dynamic size, can grow using append, similar to Java ArrayList
 - Can contain everything: primitives, structs, slices, maps etc
 - Like Java ArrayList
 - Sortable
@@ -737,12 +755,7 @@ Tasks:
 
     append, replace, get-on-idx, get-on-range, iterate
 
-Fixed length (not extendable in size)
-
-    numbers := []int{10, 20, 30, 40}
-    s := [...]string{"Voetbal", "Hockey"} // idiomatic: let compiler count
-
-Dynamic size (start small, auto extend)
+Initialisation:
 
     var slice0 []string = []string{}   // empty
     slice1 := []string{}               // empty
@@ -1962,7 +1975,7 @@ Just a few examples:
 
 * Serialisation
 
-- Based on annotations
+- Based on *tags*
 - xml, json etc in stdlib
 
 example:
